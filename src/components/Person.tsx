@@ -3,26 +3,26 @@ import myPic from "../assets/myPic.jpg";
 
 const Person = () => {
   return (
-    <div
+    <section
       id="Person"
-      className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-2 p-4 xl:flex-row-reverse"
+      className="mx-auto flex min-h-dvh max-w-3xl flex-col justify-center gap-8 p-4 md:flex-row-reverse md:items-center md:gap-2"
     >
       <div className="flex w-full justify-center">
         <img
+          height={300}
+          width={300}
           src={myPic}
-          className="lg w-1/2 rounded-full mix-blend-darken shadow-lg shadow-fuchsia-700 sm:w-1/3 md:w-1/4 lg:w-1/4 xl:w-full"
-          alt="myPic"
+          className="rounded-full shadow-lg shadow-fuchsia-700 md:w-full"
+          alt="LeonTrestmanPic"
         />
       </div>
-      <div className="flex h-full w-full flex-col gap-2 text-white">
+      <div className="flex w-full flex-col gap-2 text-white lg:justify-center">
         <h1 className="text-center text-3xl sm:text-4xl md:text-5xl">
           {PersonData.name}
         </h1>
-        <p className="text-sm">{PersonData.discription}</p>
-        <p className="text-sm">{PersonData.discription}</p>
-        <p className="text-sm">{PersonData.discription}</p>
+        <p className="text-center text-sm">{PersonData.discription}</p>
       </div>
-    </div>
+    </section>
   );
 };
 
