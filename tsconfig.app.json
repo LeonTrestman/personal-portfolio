@@ -20,5 +20,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/data/PersonData.ts"]
+  "include": ["src", "src/data/Data.tsx"]
 }

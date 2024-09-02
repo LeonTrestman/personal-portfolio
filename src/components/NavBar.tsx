@@ -1,5 +1,6 @@
 import { useState } from "react";
-import NAVIGATION_LINKS from "../data/NavLinks";
+// import NAVIGATION_LINKS from "../data/NavLinks";
+import { NAVIGATION_LINKS } from "../data/Data";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,14 +25,14 @@ const NavBar = () => {
           <h1 className="p-2 text-xl font-bold text-white">Leon Trestman</h1>
           {NAVIGATION_LINKS.map((link) => (
             <li
-              key={link.label}
+              key={link}
               className="flex rounded-full p-2 hover:bg-fuchsia-500"
             >
               <button
-                onClick={() => handleLinkClick(link.href)}
+                onClick={() => handleLinkClick(link)}
                 className="text-white"
               >
-                {link.label}
+                {link}
               </button>
             </li>
           ))}
@@ -50,14 +51,14 @@ const NavBar = () => {
           NAVIGATION_LINKS.map((link) => (
             <ul>
               <li
-                key={link.label}
+                key={link}
                 className="flex rounded-full p-2 hover:bg-fuchsia-500"
               >
                 <button
-                  onClick={() => handleLinkClick(link.href)}
+                  onClick={() => handleLinkClick(link)}
                   className="text-white"
                 >
-                  {link.label}
+                  {link}
                 </button>
               </li>
             </ul>

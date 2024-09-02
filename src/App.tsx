@@ -1,5 +1,6 @@
-import Person from "./components/Person";
+import Bio from "./components/Bio";
 import NavBar from "./components/NavBar";
+import Skills from "./components/Skills";
 
 function App() {
   return (
@@ -7,7 +8,8 @@ function App() {
       <div className="- h-dvh overflow-y-auto bg-gradient-to-br from-zinc-800 from-5% via-indigo-600 to-rose-600">
         <div className="relative z-10">
           <NavBar />
-          <Person />
+          <Bio />
+          <Skills />
         </div>
       </div>
     </>
