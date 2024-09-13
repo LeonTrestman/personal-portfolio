@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import NAVIGATION_LINKS from "../data/NavLinks";
 import { NAVIGATION_LINKS } from "../data/Data";
 
 const NavBar = () => {
@@ -11,9 +10,7 @@ const NavBar = () => {
 
   const handleLinkClick = (selected: string) => {
     const element = document.getElementById(selected);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    element?.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false);
   };
 
