@@ -2,7 +2,10 @@ import { SKILLS_DATA } from "../data/Data";
 
 const Skills = () => {
   return (
-    <section id="Skills" className="flex min-h-dvh items-center justify-center">
+    <section
+      id="Skills"
+      className="flex snap-start items-center justify-center"
+    >
       <div className="w-3/4 max-w-xl rounded-xl border border-stone-800 p-2 shadow shadow-stone-800/50 backdrop-blur-md">
         <div className="grid w-full divide-y divide-white/20">
           <h1 className="m-auto text-3xl font-semibold italic text-white/90">

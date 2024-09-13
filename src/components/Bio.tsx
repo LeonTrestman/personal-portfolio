@@ -5,7 +5,7 @@ const Bio = () => {
   return (
     <section
       id="Bio"
-      className="mx-auto flex min-h-dvh max-w-3xl flex-col gap-8 p-4 md:flex-row-reverse md:items-center md:gap-2"
+      className="mx-auto flex max-w-3xl snap-start flex-col gap-8 p-4 md:flex-row-reverse md:items-center md:gap-2"
     >
       <div className="flex w-full justify-center">
         <img

@@ -11,9 +11,7 @@ const NavBar = () => {
 
   const handleLinkClick = (selected: string) => {
     const element = document.getElementById(selected);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    element?.scrollIntoView({ behavior: "smooth" });
     setIsOpen(false);
   };
 
