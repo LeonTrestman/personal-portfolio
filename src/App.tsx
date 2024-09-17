@@ -2,6 +2,7 @@ import Bio from "./components/Bio";
 import NavBar from "./components/NavBar";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Bio />
           <Skills />
           <Projects />
+          <Contact />
         </div>
       </div>
     </>
