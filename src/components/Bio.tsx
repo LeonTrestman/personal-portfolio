@@ -1,11 +1,11 @@
-import { PERSONAL_DATA as BIO_DATA } from "../data/Data";
+import { PERSONAL_DATA } from "../data/Data";
 import myPic from "../assets/myPic.jpg";
 
 const Bio = () => {
   return (
     <section
+      className="mx-auto flex max-w-3xl flex-col gap-8 p-4 md:flex-row-reverse md:items-center md:gap-2"
       id="Bio"
-      className="mx-auto flex max-w-3xl snap-start flex-col gap-8 p-4 md:flex-row-reverse md:items-center md:gap-2"
     >
       <div className="flex w-full justify-center">
         <img
@@ -18,9 +18,9 @@ const Bio = () => {
       </div>
       <div className="flex w-full flex-col gap-2 text-white lg:justify-center">
         <h1 className="text-center text-3xl sm:text-4xl md:text-5xl">
-          {BIO_DATA.name}
+          {PERSONAL_DATA.name}
         </h1>
-        <p className="text-center text-sm">{BIO_DATA.discription}</p>
+        <p className="text-center text-sm">{PERSONAL_DATA.discription}</p>
       </div>
     </section>
   );

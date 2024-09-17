@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import NAVIGATION_LINKS from "../data/NavLinks";
 import { NAVIGATION_LINKS } from "../data/Data";
 
 const NavBar = () => {
