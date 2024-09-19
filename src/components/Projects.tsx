@@ -2,10 +2,7 @@ import { PROJECTS_DATA, Project } from "../data/Data";
 
 const Projects = () => {
   return (
-    <section
-      id="Projects"
-      className="flex snap-start items-center justify-center"
-    >
+    <section id="Projects" className="flex">
       <div className="m-auto grid h-3/4 w-3/4 max-w-3xl gap-8 md:grid-cols-2">
         {PROJECTS_DATA.map((project: Project) => (
           <ProjectCard {...project} />

@@ -1,4 +1,12 @@
-import { FaPython, FaJs, FaReact, FaJava } from "react-icons/fa";
+import { BiLogoGmail } from "react-icons/bi";
+import {
+  FaPython,
+  FaJs,
+  FaReact,
+  FaJava,
+  FaLinkedin,
+  FaGithub,
+} from "react-icons/fa";
 import { FaC } from "react-icons/fa6";
 import { SiTypescript } from "react-icons/si";
 
@@ -76,23 +84,24 @@ export const PROJECTS_DATA: Project[] = [
 export type ContactData = {
   name: string;
   link: string;
-  icon: string;
+  icon: JSX.Element;
 };
 
 export const CONTACT_DATA: ContactData[] = [
   {
     name: "LinkedIn",
-    link: "https://www.linkedin.com/in/leon-trestman-0a0a7b1b2/",
-    icon: "linkedin",
+    link: "https://www.linkedin.com/in/leon-trestman/",
+    icon: <FaLinkedin className="size-full text-blue-700" />,
+  },
+
+  {
+    name: "Email",
+    link: "mailto:tleonleont@gmail.com",
+    icon: <BiLogoGmail className="size-full text-red-500" />,
   },
   {
     name: "Github",
     link: "https://github.com/LeonTrestman",
-    icon: "github",
-  },
-  {
-    name: "Email",
-    link: "mailto:tleonleont@gmail.com",
-    icon: "email",
+    icon: <FaGithub className="size-full text-black" />,
   },
 ];

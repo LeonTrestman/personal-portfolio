@@ -15,9 +15,9 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="fixed left-0 right-0 m-2 max-w-full rounded-full p-2">
+    <nav className="fixed left-0 right-0 z-20 m-2 max-w-full rounded-full p-2">
       {/* Desktop view */}
-      <div className="z-20 mx-auto hidden max-w-4xl items-center rounded-xl border border-stone-700 shadow shadow-stone-800 backdrop-blur-md md:flex md:flex-col">
+      <div className="container m-auto hidden items-center rounded-xl border border-stone-700 shadow shadow-stone-800 backdrop-blur-md md:flex md:flex-col">
         <ul className="flex w-full justify-evenly gap-2 text-white">
           <h1 className="p-2 text-xl font-bold text-white">Leon Trestman</h1>
           {NAVIGATION_LINKS.map((link) => (
