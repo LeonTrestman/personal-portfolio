@@ -4,7 +4,7 @@ import myPic from "../assets/myPic.jpg";
 const Bio = () => {
   return (
     <section
-      className="mx-auto flex max-w-3xl flex-col gap-8 p-4 md:flex-row-reverse md:items-center md:gap-2"
+      className="full-section mx-auto flex max-w-3xl flex-col gap-8 p-4 md:flex-row-reverse md:items-center md:gap-2"
       id="Bio"
     >
       <div className="flex w-full justify-center">
