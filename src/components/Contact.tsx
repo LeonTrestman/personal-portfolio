@@ -3,37 +3,88 @@ import { CONTACT_DATA, ContactData } from "../data/Data";
 import { motion, useInView } from "framer-motion";
 
 const Contact = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0 });
+
   return (
     <section id="Contact" className="full-section p-8">
-      <div className="m-auto flex h-full flex-col items-center justify-center gap-12">
-        <h1 className="text-center text-6xl italic text-white sm:text-9xl">
-          Contact <br className="inline sm:hidden" /> me:
-        </h1>
-        <div className="container flex max-w-4xl flex-wrap items-center justify-center gap-8">
-          {CONTACT_DATA.map((contact) => (
-            <ContactElement key={contact.name} {...contact} />
-          ))}
-        </div>
-      </div>
+      <motion.div
+        ref={ref}
+        className="m-auto flex h-full flex-col items-center justify-center gap-12"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        <AnimateText text={"contact me"} />
+        <ContactList contactDataList={CONTACT_DATA} />
+      </motion.div>
     </section>
   );
 };
 
-const ContactElement = ({ name, link, icon }: ContactData) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
+type ContactListProps = {
+  contactDataList: ContactData[];
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.04,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const ContactList = ({ contactDataList }: ContactListProps) => {
+  const ContactElement = ({ name, link, icon }: ContactData) => {
+    return (
+      <motion.a
+        id={name}
+        href={link}
+        className="w-full max-w-32 rounded-3xl border border-stone-800 bg-stone-800/25 p-2 shadow shadow-stone-800/50 backdrop-blur-md sm:max-w-48"
+        variants={itemVariants}
+      >
+        {icon}
+      </motion.a>
+    );
+  };
+
   return (
-    <motion.a
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0.5 }}
-      transition={{ duration: 0.5 }}
-      id={name}
-      href={link}
-      className="w-full max-w-32 rounded-3xl border border-stone-800 bg-stone-800/25 p-2 shadow shadow-stone-800/50 backdrop-blur-md sm:max-w-48"
-    >
-      {icon}
-    </motion.a>
+    <div className="container flex max-w-4xl flex-wrap items-center justify-center gap-8">
+      {contactDataList.map((contact: ContactData) => (
+        <ContactElement key={contact.name} {...contact} />
+      ))}
+    </div>
+  );
+};
+
+type animateTextProps = {
+  text: string;
+};
+
+const AnimateText = ({ text }: animateTextProps) => {
+  const letters = text.split("");
+
+  return (
+    <div className="flex flex-col gap-2 text-center text-white">
+      <h1 className="text-center text-6xl italic text-white sm:text-9xl">
+        {letters.map((letter, index) => (
+          <motion.span
+            key={index}
+            variants={itemVariants}
+            className={letter === " " ? "" : "inline-block"}
+          >
+            {letter}
+          </motion.span>
+        ))}
+      </h1>
+    </div>
   );
 };
 

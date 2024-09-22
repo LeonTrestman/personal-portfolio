@@ -24,4 +24,5 @@ const ProjectCard = ({ name, description, link }: Project) => {
     </div>
   );
 };
+
 export default Projects;
