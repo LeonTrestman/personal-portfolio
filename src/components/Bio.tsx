@@ -57,39 +57,29 @@ const AnimatedTitles: React.FC<AnimatedTitlesProps> = ({ titles }) => {
 
   useEffect(() => {
     if (!isInView) return;
-    let timeout: number | undefined;
 
-    //Writing title
-    if (!isDeleting) {
-      //not finished writing
-      if (displayedTitle.length < titles[titleIndex].length) {
-        timeout = setTimeout(() => {
-          setDisplayedTitle(
-            titles[titleIndex].substring(0, displayedTitle.length + 1),
-          );
-        }, DELAY_KEYSTROKE);
-      }
-      //finished writing full title
-      else {
-        timeout = setTimeout(() => setIsDeleting(true), DELAY_DELETE);
-      }
-    }
-    //Deleting title
-    else {
-      //finished deleting so go to next title
-      if (displayedTitle.length == 0) {
-        setIsDeleting(false);
-        setTitleIndex((prev) => (prev + 1) % titles.length);
-      }
-      //continue deleting
-      else {
-        timeout = setTimeout(() => {
+    const handleTitleUpdate = () => {
+      if (isDeleting) {
+        if (displayedTitle.length === 0) {
+          setIsDeleting(false);
+          setTitleIndex((prev) => (prev + 1) % titles.length);
+        } else {
           setDisplayedTitle(
             titles[titleIndex].substring(0, displayedTitle.length - 1),
           );
-        }, DELAY_KEYSTROKE);
+        }
+      } else {
+        if (displayedTitle.length === titles[titleIndex].length) {
+          setTimeout(() => setIsDeleting(true), DELAY_DELETE);
+        } else {
+          setDisplayedTitle(
+            titles[titleIndex].substring(0, displayedTitle.length + 1),
+          );
+        }
       }
-    }
+    };
+
+    const timeout = setTimeout(handleTitleUpdate, DELAY_KEYSTROKE);
     return () => clearTimeout(timeout);
   }, [displayedTitle, isDeleting, titleIndex, titles, isInView]);
 
@@ -104,6 +94,7 @@ const AnimatedTitles: React.FC<AnimatedTitlesProps> = ({ titles }) => {
         {displayedTitle}
       </motion.div>
 
+      {/* cursor */}
       <motion.span
         className="ml-1 inline-block h-4 w-1 bg-rose-300 sm:h-6"
         initial={{ opacity: 0 }}

@@ -21,6 +21,8 @@ const slideVariants = {
   visible: { left: "100%" },
 };
 
+const SLIDE_DURATION = 0.5;
+
 export const Reveal: React.FC<RevealProps> = ({ children }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -40,16 +42,16 @@ export const Reveal: React.FC<RevealProps> = ({ children }) => {
         variants={hoverVariants}
         initial="hidden"
         animate={hoverControls}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.5, delay: SLIDE_DURATION }}
       >
         {children}
       </motion.div>
       <motion.div
-        className="absolute bottom-px left-0 right-0 top-px z-20 bg-purple-300/50"
+        className="absolute bottom-px left-0 right-0 top-px z-20 bg-rose-300/25"
         variants={slideVariants}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: 0.4, ease: "easeIn" }}
+        transition={{ duration: SLIDE_DURATION, ease: "easeIn" }}
       />
     </div>
   );
