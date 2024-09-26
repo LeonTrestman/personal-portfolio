@@ -25,12 +25,8 @@ export type BioData = {
 export const NAVIGATION_LINKS = ["Bio", "Skills", "Projects", "Contact"];
 
 export const BIO_DATA: BioData = {
-  name: "Leon Trestman",
-  titles: [
-    "Software engineer",
-    "Computer science graduate",
-    "Full stack developer",
-  ],
+  name: "Leon",
+  titles: ["Software engineer", "CS graduate", "Full stack developer"],
   discription:
     "teLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat, ex vel convallis posuere ",
 };

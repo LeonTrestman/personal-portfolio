@@ -1,10 +1,10 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { CONTACT_DATA, ContactData } from "../data/Data";
 import { motion, useInView } from "framer-motion";
 
-const Contact = () => {
+const Contact: React.FC = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0 });
+  const isInView = useInView(ref, { once: false });
 
   return (
     <section id="Contact" className="full-section p-8">
@@ -27,28 +27,24 @@ type ContactListProps = {
 };
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
+    y: 0,
     transition: {
       staggerChildren: 0.04,
     },
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const ContactList = ({ contactDataList }: ContactListProps) => {
+const ContactList: React.FC<ContactListProps> = ({ contactDataList }) => {
   const ContactElement = ({ name, link, icon }: ContactData) => {
     return (
       <motion.a
         id={name}
         href={link}
         className="w-full max-w-32 rounded-3xl border border-stone-800 bg-stone-800/25 p-2 shadow shadow-stone-800/50 backdrop-blur-md sm:max-w-48"
-        variants={itemVariants}
+        variants={containerVariants}
       >
         {icon}
       </motion.a>
@@ -68,7 +64,7 @@ type animateTextProps = {
   text: string;
 };
 
-const AnimateText = ({ text }: animateTextProps) => {
+const AnimateText: React.FC<animateTextProps> = ({ text }) => {
   const letters = text.split("");
 
   return (
@@ -77,7 +73,7 @@ const AnimateText = ({ text }: animateTextProps) => {
         {letters.map((letter, index) => (
           <motion.span
             key={index}
-            variants={itemVariants}
+            variants={containerVariants}
             className={letter === " " ? "" : "inline-block"}
           >
             {letter}
