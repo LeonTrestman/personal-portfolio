@@ -3,7 +3,7 @@ import { SKILLS_DATA } from "../data/Data";
 const Skills = () => {
   return (
     <section
-      id="Skills"
+      id="skills"
       className="full-section flex items-center justify-center"
     >
       <div className="w-3/4 max-w-xl rounded-xl border border-stone-800 bg-stone-800/25 p-2 shadow shadow-stone-800/50 backdrop-blur-md">

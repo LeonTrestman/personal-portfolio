@@ -22,7 +22,7 @@ export type BioData = {
   discription: string;
 };
 
-export const NAVIGATION_LINKS = ["Bio", "Skills", "Projects", "Contact"];
+export const NAVIGATION_LINKS = ["bio", "skills", "projects", "contact"];
 
 export const BIO_DATA: BioData = {
   name: "Leon",

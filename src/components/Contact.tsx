@@ -7,7 +7,7 @@ const Contact: React.FC = () => {
   const isInView = useInView(ref, { once: false });
 
   return (
-    <section id="Contact" className="full-section p-8">
+    <section id="contact" className="full-section p-8">
       <motion.div
         ref={ref}
         className="m-auto flex h-full flex-col items-center justify-center gap-12"

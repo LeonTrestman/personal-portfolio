@@ -6,7 +6,7 @@ import Reveal from "./UI/Reveal";
 
 const Bio: React.FC = () => {
   return (
-    <section className="full-section p-4 sm:p-8" id="Bio">
+    <section className="full-section p-4 sm:p-8" id="bio">
       <motion.div className="container m-auto flex h-full flex-col items-center justify-center gap-4 md:flex-row-reverse md:gap-2">
         {/* Pic Part */}
 
@@ -33,13 +33,14 @@ const Bio: React.FC = () => {
             </div>
           </Reveal>
           <Reveal>
-            <span className="">{BIO_DATA.discription}</span>
+            <span>{BIO_DATA.discription}</span>
           </Reveal>
         </div>
       </motion.div>
     </section>
   );
 };
+
 const DELAY_KEYSTROKE = 150;
 const DELAY_DELETE = 3000;
 
@@ -51,37 +52,57 @@ const AnimatedTitles: React.FC<AnimatedTitlesProps> = ({ titles }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const [titleIndex, setTitleIndex] = useState(0);
-  const [displayedTitle, setDisplayedTitle] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [titleState, setTitleState] = useState({
+    titleIndex: 0,
+    displayedTitle: "",
+    isDeleting: false,
+  });
+
+  const handleTitleUpdate = () => {
+    const { titleIndex, displayedTitle, isDeleting } = titleState;
+
+    if (isDeleting) {
+      if (displayedTitle.length === 0) {
+        setTitleState((prevState) => ({
+          ...prevState,
+          isDeleting: false,
+          titleIndex: (titleIndex + 1) % titles.length,
+        }));
+      } else {
+        setTitleState((prevState) => ({
+          ...prevState,
+          displayedTitle: titles[titleIndex].substring(
+            0,
+            displayedTitle.length - 1,
+          ),
+        }));
+      }
+    } else {
+      if (displayedTitle.length === titles[titleIndex].length) {
+        setTimeout(() => {
+          setTitleState((prevState) => ({
+            ...prevState,
+            isDeleting: true,
+          }));
+        }, DELAY_DELETE);
+      } else {
+        setTitleState((prevState) => ({
+          ...prevState,
+          displayedTitle: titles[titleIndex].substring(
+            0,
+            displayedTitle.length + 1,
+          ),
+        }));
+      }
+    }
+  };
 
   useEffect(() => {
     if (!isInView) return;
 
-    const handleTitleUpdate = () => {
-      if (isDeleting) {
-        if (displayedTitle.length === 0) {
-          setIsDeleting(false);
-          setTitleIndex((prev) => (prev + 1) % titles.length);
-        } else {
-          setDisplayedTitle(
-            titles[titleIndex].substring(0, displayedTitle.length - 1),
-          );
-        }
-      } else {
-        if (displayedTitle.length === titles[titleIndex].length) {
-          setTimeout(() => setIsDeleting(true), DELAY_DELETE);
-        } else {
-          setDisplayedTitle(
-            titles[titleIndex].substring(0, displayedTitle.length + 1),
-          );
-        }
-      }
-    };
-
     const timeout = setTimeout(handleTitleUpdate, DELAY_KEYSTROKE);
     return () => clearTimeout(timeout);
-  }, [displayedTitle, isDeleting, titleIndex, titles, isInView]);
+  }, [isInView, titleState]);
 
   return (
     <div ref={ref} className="relative font-sans font-extrabold text-rose-300">
@@ -91,7 +112,7 @@ const AnimatedTitles: React.FC<AnimatedTitlesProps> = ({ titles }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        {displayedTitle}
+        {titleState.displayedTitle}
       </motion.div>
 
       {/* cursor */}
