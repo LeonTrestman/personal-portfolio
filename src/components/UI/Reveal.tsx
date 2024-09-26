@@ -1,4 +1,4 @@
-import { useAnimation, motion, useInView } from "framer-motion";
+import { motion, useInView, useAnimationControls } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 type RevealProps = {
@@ -26,8 +26,8 @@ const SLIDE_DURATION = 0.5;
 export const Reveal: React.FC<RevealProps> = ({ children }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const hoverControls = useAnimation();
-  const slideControls = useAnimation();
+  const hoverControls = useAnimationControls();
+  const slideControls = useAnimationControls();
 
   useEffect(() => {
     if (isInView) {

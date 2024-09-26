@@ -26,7 +26,7 @@ export const NAVIGATION_LINKS = ["Bio", "Skills", "Projects", "Contact"];
 
 export const BIO_DATA: BioData = {
   name: "Leon",
-  titles: ["Software engineer", "CS graduate", "Full stack developer"],
+  titles: ["Software engineer", "CS graduate", "Full-stack developer"],
   discription:
     "teLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat, ex vel convallis posuere ",
 };

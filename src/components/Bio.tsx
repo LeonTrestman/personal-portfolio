@@ -7,19 +7,19 @@ import Reveal from "./UI/Reveal";
 const Bio: React.FC = () => {
   return (
     <section className="full-section p-4 sm:p-8" id="Bio">
-      <motion.div className="container m-auto flex h-full flex-col items-center justify-center gap-8 md:flex-row-reverse">
+      <motion.div className="container m-auto flex h-full flex-col items-center justify-center gap-4 md:flex-row-reverse md:gap-2">
         {/* Pic Part */}
 
         <img
           src={myPic}
-          className="size-fit max-w-xs rounded-full shadow-lg shadow-fuchsia-700 sm:max-w-sm"
+          className="size-fit max-w-xs rounded-full shadow-lg shadow-fuchsia-700 lg:max-w-sm"
           alt="LeonTrestmanPic"
         />
 
         {/* text part */}
         <div className="flex flex-col items-center gap-4 text-white">
           <Reveal>
-            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-extrabold md:text-5xl lg:text-6xl">
               <span>
                 Hey, I'm {BIO_DATA.name}
                 <span className="text-rose-300">.</span>
@@ -27,8 +27,8 @@ const Bio: React.FC = () => {
             </h1>
           </Reveal>
           <Reveal>
-            <div className="flex w-full items-center justify-center gap-2 text-2xl sm:text-3xl md:text-4xl">
-              <span className="">I'm a </span>
+            <div className="flex w-full items-center justify-center gap-2 text-2xl md:text-3xl lg:text-4xl">
+              <span className="whitespace-nowrap">I'm a </span>
               <AnimatedTitles titles={BIO_DATA.titles} />
             </div>
           </Reveal>
