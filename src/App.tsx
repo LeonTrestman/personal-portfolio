@@ -6,15 +6,13 @@ import Contact from "./components/Contact";
 
 function App() {
   return (
-    <>
-      <div className="- h-dvh snap-y snap-mandatory overflow-y-auto bg-gradient-to-br from-zinc-800 from-5% via-indigo-600 to-rose-600">
-        <NavBar />
-        <Bio />
-        <Skills />
-        <Projects />
-        <Contact />
-      </div>
-    </>
+    <div className="-z-50 h-dvh overflow-y-auto bg-gradient-to-br from-zinc-800 from-5% via-indigo-600 to-rose-600">
+      <NavBar />
+      <Bio />
+      <Skills />
+      <Projects />
+      <Contact />
+    </div>
   );
 }
 

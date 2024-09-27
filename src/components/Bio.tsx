@@ -6,20 +6,23 @@ import Reveal from "./UI/Reveal";
 
 const Bio: React.FC = () => {
   return (
-    <section className="full-section p-4 sm:p-8" id="bio">
-      <motion.div className="container m-auto flex h-full flex-col items-center justify-center gap-4 md:flex-row-reverse md:gap-2">
+    <section className="full-section" id="bio">
+      <div
+        id="centerThisDiv"
+        className="relative m-auto flex min-h-dvh max-w-4xl flex-col items-center justify-center gap-4 md:flex-row-reverse md:justify-between md:gap-2"
+      >
         {/* Pic Part */}
 
         <img
           src={myPic}
-          className="size-fit max-w-xs rounded-full shadow-lg shadow-fuchsia-700 lg:max-w-sm"
+          className="w-full max-w-xs rounded-full shadow-lg shadow-fuchsia-700 lg:max-w-sm"
           alt="LeonTrestmanPic"
         />
 
         {/* text part */}
-        <div className="flex flex-col items-center gap-4 text-white">
+        <div className="flex flex-col items-center gap-4 text-white md:absolute md:left-0 md:w-2/3 md:items-start">
           <Reveal>
-            <h1 className="text-4xl font-extrabold md:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl lg:text-7xl">
               <span>
                 Hey, I'm {BIO_DATA.name}
                 <span className="text-rose-300">.</span>
@@ -27,8 +30,8 @@ const Bio: React.FC = () => {
             </h1>
           </Reveal>
           <Reveal>
-            <div className="flex w-full items-center justify-center gap-2 text-2xl md:text-3xl lg:text-4xl">
-              <span className="whitespace-nowrap">I'm a </span>
+            <div className="flex w-fit gap-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+              <span className="whitespace-nowrap">I'm a</span>
               <AnimatedTitles titles={BIO_DATA.titles} />
             </div>
           </Reveal>
@@ -36,7 +39,7 @@ const Bio: React.FC = () => {
             <span>{BIO_DATA.discription}</span>
           </Reveal>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
@@ -117,7 +120,7 @@ const AnimatedTitles: React.FC<AnimatedTitlesProps> = ({ titles }) => {
 
       {/* cursor */}
       <motion.span
-        className="ml-1 inline-block h-4 w-1 bg-rose-300 sm:h-6"
+        className="ml-1 inline-block h-6 w-1 bg-rose-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{

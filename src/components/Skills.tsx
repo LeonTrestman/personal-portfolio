@@ -6,9 +6,9 @@ const Skills = () => {
       id="skills"
       className="full-section flex items-center justify-center"
     >
-      <div className="w-3/4 max-w-xl rounded-xl border border-stone-800 bg-stone-800/25 p-2 shadow shadow-stone-800/50 backdrop-blur-md">
+      <div className="container rounded-xl border border-stone-800 bg-stone-800/25 p-2 shadow shadow-stone-800/50 backdrop-blur-md">
         <div className="grid w-full divide-y divide-white/20">
-          <h1 className="m-auto text-3xl font-semibold italic text-white/90">
+          <h1 className="text-3 xl m-auto font-semibold italic text-white/90">
             Skills:
           </h1>
           {SKILLS_DATA.map((skill) => (
