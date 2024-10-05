@@ -31,34 +31,81 @@ export const BIO_DATA: BioData = {
     "teLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat, ex vel convallis posuere ",
 };
 
-export const SKILLS_DATA = [
-  {
-    name: "Python",
-    icon: <FaPython className="m-auto text-4xl text-green-600" />,
-  },
-  {
-    name: "Javascript",
-    icon: <FaJs className="m-auto text-4xl text-yellow-400" />,
-  },
-  {
-    name: "Typescript",
-    icon: <SiTypescript className="m-auto text-4xl text-blue-500" />,
-  },
-  {
-    name: "React",
-    icon: <FaReact className="m-auto text-4xl text-cyan-400" />,
-  },
-  {
-    name: "C",
-    icon: (
-      <FaC className="m-auto rounded-full bg-blue-700/50 p-1 text-4xl text-white" />
-    ),
-  },
-  {
-    name: "Java",
-    icon: <FaJava className="m-auto text-4xl text-red-500" />,
-  },
-];
+export type Skill = {
+  name: string;
+  icon: JSX.Element;
+};
+
+export const SKILLS_DATA: Record<string, Skill[]> = {
+  "Programming Language": [
+    {
+      name: "Python",
+      icon: <FaPython className="text-green-600" />,
+    },
+    {
+      name: "Javascript",
+      icon: <FaJs className="text-yellow-400" />,
+    },
+    {
+      name: "Typescript",
+      icon: <SiTypescript className="text-blue-500" />,
+    },
+    {
+      name: "React",
+      icon: <FaReact className="text-cyan-400" />,
+    },
+    {
+      name: "C",
+      icon: <FaC className="rounded-full bg-blue-700/50 p-1 text-white" />,
+    },
+    {
+      name: "Java",
+      icon: <FaJava className="text-red-500" />,
+    },
+  ],
+  Tools: [
+    {
+      name: "Docker",
+      icon: <FaPython className="text-blue-500" />,
+    },
+    {
+      name: "Git",
+      icon: <FaPython className="text-red-500" />,
+    },
+    {
+      name: "Linux",
+      icon: <FaPython className="text-yellow-500" />,
+    },
+  ],
+  Databases: [
+    {
+      name: "PostgreSQL",
+      icon: <FaPython className="text-blue-500" />,
+    },
+    {
+      name: "MongoDB",
+      icon: <FaPython className="text-green-500" />,
+    },
+    {
+      name: "SQLite",
+      icon: <FaPython className="text-yellow-500" />,
+    },
+  ],
+  Other: [
+    {
+      name: "REST",
+      icon: <FaPython className="text-blue-500" />,
+    },
+    {
+      name: "GraphQL",
+      icon: <FaPython className="text-green-500" />,
+    },
+    {
+      name: "CI/CD",
+      icon: <FaPython className="text-yellow-500" />,
+    },
+  ],
+};
 
 export const PROJECTS_DATA: Project[] = [
   {

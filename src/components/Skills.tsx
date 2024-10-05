@@ -1,28 +1,65 @@
-import { SKILLS_DATA } from "../data/Data";
+import { Skill, SKILLS_DATA } from "../data/Data";
+import Reveal from "./UI/Reveal";
 
-const Skills = () => {
+const Skills: React.FC = () => {
   return (
-    <section
-      id="skills"
-      className="full-section flex items-center justify-center"
-    >
-      <div className="container rounded-xl border border-stone-800 bg-stone-800/25 p-2 shadow shadow-stone-800/50 backdrop-blur-md">
-        <div className="grid w-full divide-y divide-white/20">
-          <h1 className="text-3 xl m-auto font-semibold italic text-white/90">
-            Skills:
-          </h1>
-          {SKILLS_DATA.map((skill) => (
-            <div
-              key={skill.name}
-              className="flex items-center p-2 text-center text-white"
-            >
-              <div className="w-full">{skill.icon}</div>
-              <div className="w-full">{skill.name}</div>
-            </div>
-          ))}
-        </div>
+    <section id="skills" className="full-section">
+      <div className="container m-auto max-w-4xl">
+        <SkillHeader />
+        {Object.entries(SKILLS_DATA).map(([category, catSkills]) => (
+          <SkillCategory category={category} catSkills={catSkills} />
+        ))}
       </div>
     </section>
+  );
+};
+
+const SkillHeader: React.FC = () => (
+  <h1 className="mb-4 flex items-center gap-8 text-3xl font-extrabold text-white sm:text-4xl md:text-5xl lg:text-6xl">
+    <Reveal>
+      <span className="flex-0">
+        Skills
+        <span className="text-rose-300">.</span>
+      </span>
+    </Reveal>
+    <div className="flex-1 border-t border-rose-300/50"></div>
+  </h1>
+);
+
+type SkillCategoryProps = {
+  category: string;
+  catSkills: Skill[];
+};
+
+const SkillCategory: React.FC<SkillCategoryProps> = ({
+  category,
+  catSkills: skills,
+}) => (
+  <div key={category} className="mb-4 flex flex-col gap-4">
+    <Reveal>
+      <h2 className="text-xl text-white md:text-2xl">{category}:</h2>
+    </Reveal>
+    <div className="flex flex-wrap justify-center gap-4">
+      {skills.map((skill: Skill) => (
+        <SkillElement key={skill.name} {...skill} />
+      ))}
+    </div>
+  </div>
+);
+
+type SkillElementProps = {
+  name: string;
+  icon: JSX.Element;
+};
+
+const SkillElement: React.FC<SkillElementProps> = ({ name, icon }) => {
+  return (
+    <Reveal>
+      <div className="flex items-center justify-center gap-2 rounded-full bg-gray-800/50 p-4">
+        {icon}
+        <p className="text-white">{name}</p>
+      </div>
+    </Reveal>
   );
 };
 
